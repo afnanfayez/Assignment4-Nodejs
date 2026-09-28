@@ -1,0 +1,79 @@
+1) Entities and Attributes (with type) :
+
+MUSICIAN :
+MusicianID (Primary Key)
+Name (Simple)
+Address : Composite attribute (Street + City)
+Phone (Simple)
+
+INSTRUMENT :
+Name (Primary Key unique)
+MusicalKey (Simple)
+
+ALBUM :
+AlbumID (Primary Key)
+Title (Simple)
+CopyrightDate (Simple)
+
+SONG :
+Title (Primary Key unique)
+Author (Simple)
+##################################################################################################
+
+2) Relationships and Their Cardinality :
+Plays : 
+MUSICIAN ↔ INSTRUMENT
+M:N
+A musician may play several instruments, and an instrument may be played by several musicians
+
+Contains :
+ALBUM → SONG
+1:M
+An album has several songs, but each song belongs to only one album
+
+Performs :
+MUSICIAN ↔ SONG
+M:N
+A song is performed by one or more musicians, and a musician performs several songs
+
+Produces
+MUSICIAN → ALBUM
+1:M
+A musician (as producer) may produce several albums, but each album has exactly one producer
+##################################################################################################
+
+3) Mapping the ERD to Tables :
+
+MUSICIAN
+(MusicianID PK, Name, Street, City, Phone)
+Address (composite) is split into two separate columns: Street and City.
+
+INSTRUMENT
+(Name PK, MusicalKey)
+
+ALBUM
+(AlbumID PK, Title, CopyrightDate, ProducerID FK → MUSICIAN.MusicianID)
+The FK goes here because the Produces relationship is 1:M and ALBUM is on the "Many" side.
+
+SONG
+(Title PK, Author, AlbumID FK → ALBUM.AlbumID)
+The FK goes here because the Contains relationship is 1:M and SONG is on the "Many" side.
+
+Musician_Instrument 
+(junction table for the M:N relationship)
+MusicianID FK → MUSICIAN
+InstrumentName FK → INSTRUMENT
+Primary Key = (MusicianID, InstrumentName)
+
+Musician_Song 
+(junction table for the M:N relationship)
+MusicianID FK → MUSICIAN
+SongTitle FK → SONG
+Primary Key = (MusicianID, SongTitle)
+
+
+
+
+
+
+

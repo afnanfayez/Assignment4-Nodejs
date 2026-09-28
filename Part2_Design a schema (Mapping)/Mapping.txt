@@ -1,0 +1,28 @@
+Step 1
+	Regular Entity Types	
+    USER and PRODUCT are regular entities : each becomes a table. 
+    The composite attribute userName is decomposed directly into firstName and lastName columns
+
+Step 2	
+    Weak Entity Types		
+    No weak entity in the diagram
+
+Step 3	
+    Binary 1:1	
+    No 1:1 relationship
+
+Step 4	
+    Binary 1:N	
+    The Own relationship is 1 (User) : N (Product) : the Foreign Key is placed on the "N" side, so PRODUCT gets a UserID column
+
+Step 5	
+    M:N	
+    No M:N relationship
+
+Step 6	
+    N-ary
+    No relationship involving 3+ entities
+
+Step 7	
+    Unary Relationship		
+    No entity relates to itself
